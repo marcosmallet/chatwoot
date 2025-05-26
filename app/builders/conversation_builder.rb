@@ -18,7 +18,7 @@ class ConversationBuilder
   end
 
   def conversation_params
-    additional_attributes = params[:additional_attributes]&.permit! || { mark_as_read: true }
+    additional_attributes = params[:additional_attributes]&.permit! || {}
     custom_attributes = params[:custom_attributes]&.permit! || {}
     status = params[:status].present? ? { status: params[:status] } : {}
 

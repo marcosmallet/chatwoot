@@ -72,6 +72,9 @@ class Conversation < ApplicationRecord
   enum status: { open: 0, resolved: 1, pending: 2, snoozed: 3 }
   enum priority: { low: 0, medium: 1, high: 2, urgent: 3 }
 
+  store :additional_attributes,
+        accessors: [:mark_as_read, :type, :conversation_language, :mail_subject, :crm_name, :source, :browser_language, :in_reply_to], coder: JSON
+
   scope :unassigned, -> { where(assignee_id: nil) }
   scope :assigned, -> { where.not(assignee_id: nil) }
   scope :assigned_to, ->(agent) { where(assignee_id: agent.id) }

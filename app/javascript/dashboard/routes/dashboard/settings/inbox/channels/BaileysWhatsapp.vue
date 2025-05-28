@@ -23,6 +23,7 @@ export default {
       apiKey: '',
       providerUrl: '',
       showAdvancedOptions: false,
+      markAsRead: true,
     };
   },
   computed: {
@@ -60,6 +61,7 @@ export default {
                   ? {
                       api_key: this.apiKey,
                       url: this.providerUrl,
+                      mark_as_read: this.markAsRead,
                     }
                   : {},
             },
@@ -157,6 +159,13 @@ export default {
           <span v-if="v$.apiKey.$error" class="message">
             {{ $t('INBOX_MGMT.ADD.WHATSAPP.API_KEY.ERROR') }}
           </span>
+        </label>
+      </div>
+
+      <div class="w-[65%] flex-shrink-0 flex-grow-0 max-w-[65%]">
+        <label>
+          {{ $t('INBOX_MGMT.ADD.WHATSAPP.MARK_AS_READ.LABEL') }}
+          <input v-model="markAsRead" type="checkbox" value="true" />
         </label>
       </div>
     </template>

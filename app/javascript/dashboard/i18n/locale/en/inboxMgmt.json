@@ -267,7 +267,10 @@
         "PROVIDER_URL": {
           "LABEL": "Provider URL",
           "PLACEHOLDER": "If provider is not running locally, please provide the URL",
-          "ERROR":"Please enter a valid URL"
+          "ERROR": "Please enter a valid URL"
+        },
+        "MARK_AS_READ": {
+          "LABEL": "Mark messages as read"
         },
         "ADVANCED_OPTIONS": "Advanced options",
         "BAILEYS": {

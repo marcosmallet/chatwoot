@@ -8,10 +8,12 @@ import { isPhoneE164OrEmpty } from 'shared/helpers/Validators';
 import { isValidURL } from '../../../../../helper/URLHelper';
 
 import NextButton from 'dashboard/components-next/button/Button.vue';
+import Checkbox from 'dashboard/components-next/checkbox/Checkbox.vue';
 
 export default {
   components: {
     NextButton,
+    Checkbox,
   },
   setup() {
     return { v$: useVuelidate() };
@@ -164,8 +166,12 @@ export default {
 
       <div class="w-[65%] flex-shrink-0 flex-grow-0 max-w-[65%]">
         <label>
-          {{ $t('INBOX_MGMT.ADD.WHATSAPP.MARK_AS_READ.LABEL') }}
-          <input v-model="markAsRead" type="checkbox" value="true" />
+          <div class="flex mb-2 items-center">
+            <span class="mr-2 text-sm">
+              {{ $t('INBOX_MGMT.ADD.WHATSAPP.MARK_AS_READ.LABEL') }}
+            </span>
+            <Checkbox v-model="markAsRead" />
+          </div>
         </label>
       </div>
     </template>

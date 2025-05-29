@@ -65,7 +65,7 @@ export default {
                       url: this.providerUrl,
                       mark_as_read: this.markAsRead,
                     }
-                  : {},
+                  : { mark_as_read: this.markAsRead },
             },
           }
         );

@@ -1,17 +1,35 @@
-FROM ghcr.io/fazer-ai/chatwoot:latest
+FROM ruby:3.1-slim
 
+# Instala dependências do sistema
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  libpq-dev \
+  nodejs \
+  yarn \
+  git \
+  curl \
+  && apt-get clean
+
+# Diretório de trabalho
 WORKDIR /app
 
-ENV NODE_ENV=production \
-    RAILS_ENV=production \
-    INSTALLATION_ENV=docker \
-    DEFAULT_LOCALE=pt_BR \
-    INTERNAL_HOST_URL=http://rails:3000 \
-    POSTGRES_PORT=5432 \
-    POSTGRES_DATABASE=chatwoot_production \
-    REDIS_URL=redis://redis:6379 \
-    BAILEYS_PROVIDER_USE_INTERNAL_HOST_URL=true
+# Copia os arquivos do projeto
+COPY . .
 
+# Instala as gems
+RUN bundle install
+
+# Pré-compila os assets (opcional para produção)
+RUN RAILS_ENV=production bundle exec rake assets:precompile
+
+# Define variáveis padrão
+ENV RAILS_ENV=production \
+    NODE_ENV=production \
+    INSTALLATION_ENV=docker \
+    DEFAULT_LOCALE=pt_BR
+
+# Expõe a porta padrão do Rails
 EXPOSE 3000
 
+# Comando de inicialização
 CMD ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]

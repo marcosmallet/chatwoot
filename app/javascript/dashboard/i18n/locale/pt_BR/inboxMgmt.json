@@ -270,7 +270,7 @@
           "ERROR": "Por favor, insira uma URL válida"
         },
         "MARK_AS_READ": {
-          "LABEL": "Marcar mensagens como lidas"
+          "LABEL": "Confirmações de leitura"
         },
         "ADVANCED_OPTIONS": "Opções avançadas",
         "BAILEYS": {

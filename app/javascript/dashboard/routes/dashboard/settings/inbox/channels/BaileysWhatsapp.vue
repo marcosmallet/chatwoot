@@ -8,12 +8,13 @@ import { isPhoneE164OrEmpty } from 'shared/helpers/Validators';
 import { isValidURL } from '../../../../../helper/URLHelper';
 
 import NextButton from 'dashboard/components-next/button/Button.vue';
-import Checkbox from 'dashboard/components-next/checkbox/Checkbox.vue';
+import Switch from 'dashboard/components-next/switch/Switch.vue';
 
 export default {
   components: {
     NextButton,
-    Checkbox,
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Switch,
   },
   setup() {
     return { v$: useVuelidate() };
@@ -170,7 +171,7 @@ export default {
             <span class="mr-2 text-sm">
               {{ $t('INBOX_MGMT.ADD.WHATSAPP.MARK_AS_READ.LABEL') }}
             </span>
-            <Checkbox v-model="markAsRead" />
+            <Switch id="markAsRead" v-model="markAsRead" />
           </div>
         </label>
       </div>

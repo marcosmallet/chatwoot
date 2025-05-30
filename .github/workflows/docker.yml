@@ -27,7 +27,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: seuusuario/chatwoot:latest
+          tags: marcosmallet/chatwoot:latest
 
       - name: Image digest
         run: echo "Image published with digest ${{ steps.docker_build.outputs.digest }}"
